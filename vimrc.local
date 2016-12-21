@@ -1,3 +1,5 @@
+" Put all plugin related settings here
+"
 " -----------------------------------------------------------------------------
 " YouCompleteMe global settings
 "
@@ -34,6 +36,8 @@ let g:ycm_filetype_blacklist = {
 
 " -----------------------------------------------------------------------------
 " Clang tooling for LLVM, clang-check integration (llvm required)
+"
+" A courtesy of Maximum Awesome (https://github.com/square/maximum-awesome)
 "
 " This is for your C-family code checking and analysis.
 " If you do not need clang-check, please comment lines below until next section

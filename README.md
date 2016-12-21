@@ -59,3 +59,8 @@ append the following alias in your `~/.bash_profile` may fix your issue
    alias vi='/usr/local/bin/vim'
    alias vim='/usr/local/bin/vim'
 ```
+
+# Acknowledgement
+
+A courtesy of [Maximum Awesome](https://github.com/square/maximum-awesome)
+configuration with preferred customization.
