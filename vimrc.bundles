@@ -1,0 +1,66 @@
+"
+" Add bundles plugins here
+"
+" Let Vundle manage Vundle itself, REQUIRED
+" See https://github.com/VundleVim/Vundle.vim
+Plugin 'VundleVim/Vundle.vim'
+
+" This one does the magic to autocomplete your codes for most favorite types.
+" See https://github.com/Valloric/YouCompleteMe
+" It has clang semantic support as well.
+Plugin 'Valloric/YouCompleteMe'
+
+" Show changes (git diff) of an open file in 'gutter' instantly.
+" See https://github.com/airblade/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
+
+" Surroundings: parentheses, brackets, quotes, XML tags, etc It provides
+" mappings to easily delete, change and add such surroundings in pairs.
+" See https://github.com/tpope/vim-surround
+" e.g., change double quote in "hello world" to single quote
+Plugin 'tpope/vim-surround'
+
+" Comment/uncomment lines using gcc and gc
+" See https://github.com/tpope/vim-commentary
+Plugin 'tpope/vim-commentary'
+
+" Automatically ends certain structures, e.g., 'if' and 'fi'
+" See https://github.com/tpope/vim-endwise
+Plugin 'tpope/vim-endwise'
+
+" Syntax highlight for Google Protocol Buffers
+" See https://github.com/uarun/vim-protobuf
+"Plugin 'uarun/vim-protobuf'
+
+" SnipMate aims to provide support for textual snippets, similar to TextMate or other Vim plugins
+" like UltiSnips. For example, in C, typing for<tab> could be expanded to
+"
+" for (i = 0; i < count; i++) {
+"     /* code */
+" }
+"
+" See https://github.com/garbas/vim-snipmate
+Plugin 'garbas/vim-snipmate'
+Plugin 'MarcWeber/vim-addon-mw-utils'  " Dependency for 'vim-snipmate', REQUIRED by 'snipmate'
+Plugin 'tomtom/tlib_vim'               " Dependency for 'vim-snipmate', REQUIRED by 'snipmate'
+Plugin 'honza/vim-snippets'            " Default snippets for 'vim-snipmate', REQUIRED by 'snipmate'
+
+" Display the indention levels with thin vertical lines
+" See https://github.com/Yggdroot/indentLine
+Plugin 'Yggdroot/indentLine'
+
+
+" Integration of Scala with nice convenience into vim
+" See https://github.com/derekwyatt/vim-scala
+Plugin 'derekwyatt/vim-scala'
+
+" Insert or delete brackets, parens, quotes in pair
+" e.g., type (, you will get (_), underscore is where the cursor will be
+" See https://github.com/vim-scripts/auto-pairs-gentle
+Plugin 'vim-scripts/auto-pairs-gentle'
+
+" Markdown syntax highlight and support
+Plugin 'gabrielelana/vim-markdown'
+
+" Color scheme 'solarized' for iTerm, optional
+"Plugin 'vim-scripts/Solarized'         " Color scheme 'solarized' for iTerm, optional

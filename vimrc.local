@@ -1,0 +1,142 @@
+" -----------------------------------------------------------------------------
+" YouCompleteMe global settings
+"
+" 'Valloric/YouCompleteMe' (https://github.com/Valloric/YouCompleteMe)
+" This is the one doing the magic of your code autocompletion
+"
+" Config the key for completion, by default is TAB
+"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+
+" Set the global config for C-family language auto-completion. REQUIRED
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Disable auto-completion for the following file types. By default,
+" auto-completion has been disabled for 'markdown' and 'text' files. To enable
+" this feature for them, 'markdown' and 'text' have been removed from the list
+"
+" To know more, :help g:ycm_filetype_blacklist
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'unite' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
+
+" To enable the autocompletion for some file types, uncomment the following
+" line and put them into the list, {'c': 0}.
+" To know more, :help g:ycm_filetype_whitelist
+"
+" let g:ycm_filetype_whitelist = { '*': 1 }
+
+" -----------------------------------------------------------------------------
+" Clang tooling for LLVM, clang-check integration (llvm required)
+"
+" This is for your C-family code checking and analysis.
+" If you do not need clang-check, please comment lines below until next section
+" See http://clang.llvm.org/docs/HowToSetupToolingForLLVM.html for details
+"
+" !! This requires a compilation database. !!
+"
+" A compilation database is a JSON file, which consist of an array of "command
+" objects" where each command object specifies one way a translation unit is
+" compiled in the project. Each command object contains the translation unit's
+" main file, the working directory of the compile run and the actual compile
+" command.
+"
+" See http://clang.llvm.org/docs/JSONCompilationDatabase.html for details
+"
+function! ClangCheckImpl(cmd)
+  if &autowrite | wall | endif
+  echo "Running " . a:cmd . " ..."
+  let l:output = system(a:cmd)
+  cexpr l:output
+  cwindow
+  let w:quickfix_title = a:cmd
+  if v:shell_error != 0
+    cc
+  endif
+  let g:clang_check_last_cmd = a:cmd
+endfunction
+
+function! ClangCheck()
+  let l:filename = expand('%')
+  if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
+    call ClangCheckImpl("clang-check " . l:filename)
+  elseif exists("g:clang_check_last_cmd")
+    call ClangCheckImpl(g:clang_check_last_cmd)
+  else
+    echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
+  endif
+endfunction
+
+" Press F5 to reparse the file ending with *.cpp, *.cxx, *.cc and *.c
+nmap <silent> <F5> :call ClangCheck()<CR><CR>
+
+" -----------------------------------------------------------------------------
+" Shortcut to trigger C-family source code formatting
+"
+" This is for C-family source code formatting. If you don't need it, please
+" comment this section.
+"
+" 'clang-format' is required. To install: 'brew install clang-format'
+"
+" Config shortcut for triggering the source code format for C family.
+" Press 'Control' and 'i' in INSERT mode to trigger the fomartting
+map  <C-I> :pyf      /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
+imap <C-I> <ESC>:pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
+imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
+
+" -----------------------------------------------------------------------------
+" Shortcut to trigger Scala source code formatting
+"
+" 'scalariform' is required. To install: 'brew install scalariform'
+" If you do not require Scala code auto-formatting, comment this section.
+"
+" To format Scala source, type ',st' (excluding single quotes) in normal mode.
+map ,st :%!java -jar /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
+
+" -----------------------------------------------------------------------------
+" Settings for plugin 'airblade/vim-gitgutter'
+"
+" It shows summary changes (git diff) available in an open file instantly.
+" For details, refer to https://github.com/airblade/vim-gitgutter
+let g:gitgutter_enabled=1    " turn on gitgutter by default
+let g:gitgutter_realtime=0   " disable realtime update for more accuracy
+let g:gitgutter_eager=0      " disable change notice to git index
+let g:gitgutter_map_keys=0   " disable all mappings for vim-gitgutter
+
+" -----------------------------------------------------------------------------
+" Settings for plugin 'tpope/vim-commentary'
+"
+" It supports comment/uncomment lines in a batch,
+" e.g., ':1,10Commentary' comments/uncomments lines 1 to 10
+"
+" Support favorite file types
+autocmd FileType apache setlocal commentstring=#\ %s
+
+" -----------------------------------------------------------------------------
+"  Settings for plugin 'garbas/vim-snipmate'
+"
+" Change the default trigger key to F2. REQUIRED as default key has been mapped
+" to something else. This may lead to warning deprecated message.
+"
+" To avoid annoying warning message, comment the following line at
+" '~/.vim/bundle/vim-snipmate/after/plugin/snipMate.vim'
+"
+" echom 'g:snips_trigger_key is deprecated. See :h snipMate-mappings'
+"
+let g:snips_trigger_key = '<F2>'
+
+" -----------------------------------------------------------------------------
+"  Settings for plugin 'Yggdroot/indentLine'
+"
+" This shows the vertical thin line for certain structures, e.g., if-else.
+" To disable, uncomment below line
+"let g:indentLine_enabled = 0
+
+" Customize the indent line color
+let g:indentLine_color_term = 232
