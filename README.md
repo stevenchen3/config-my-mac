@@ -53,7 +53,7 @@ rementalDecoder
      /usr/local/Cellar/python/2.7.12_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/_io.so
 ```
 
-append the following alias in your `~/.bash_profile` may fix your issue
+appending the following alias to your `~/.bash_profile` may fix your issue
 
 ```
    alias vi='/usr/local/bin/vim'
