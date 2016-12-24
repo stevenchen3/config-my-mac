@@ -39,6 +39,8 @@ Now, you're all set!
 
 # Gotchar
 
+## YouCompleteMe unavailable error
+
 If you encounter this following error message:
 
 ```
@@ -58,6 +60,19 @@ appending the following alias to your `~/.bash_profile` may fix your issue
 ```
    alias vi='/usr/local/bin/vim'
    alias vim='/usr/local/bin/vim'
+```
+
+## Change default trigger key for Vim SnipMate plugin
+
+Default trigger key is <TAB> in INSERT mode, however if TAB has been mapped something
+else, we need to reset the default trigger key by appending `let g:snips_trigger_key = '<F2>'` to
+`~/.vimrc` (In this example, we map to function key F2). However, since `snips_trigger_key` has been
+deprecated, after making this change, every time you open vim, you will see annoying message like
+`g:snips_trigger_key is deprecated. See :h snipMate-mappings`. To avoid this, please comment the
+following line at `~/.vim/bundle/vim-snipmate/after/plugin/snipMate.vim`
+
+```
+echom 'g:snips_trigger_key is deprecated. See :h snipMate-mappings'
 ```
 
 # Acknowledgement
