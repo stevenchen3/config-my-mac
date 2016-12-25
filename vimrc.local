@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " YouCompleteMe global settings
 "
-" 'Valloric/YouCompleteMe' (https://github.com/Valloric/YouCompleteMe)
+" 'Valloric/YouCompleteMe' (see https://github.com/Valloric/YouCompleteMe)
 " This is the one doing the magic of your code autocompletion
 "
 " Config the key for completion, by default is TAB
@@ -10,8 +10,12 @@
 " Set the global config for C-family language auto-completion. REQUIRED
 " This file can be found at
 " '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" Here, copy it to '/usr/local/etc/vim.d'
+" Make sure you have copied it to '/usr/local/etc/vim.d'
 let g:ycm_global_ycm_extra_conf = '/usr/local/etc/vim.d/.ycm_extra_conf.py'
+
+" YCM will show the completion menu even when typing inside comments, set to 0
+" to disable this feature
+let g:ycm_complete_in_comments = 1
 
 " Disable auto-completion for the following file types. By default,
 " auto-completion has been disabled for 'markdown' and 'text' files. To enable
