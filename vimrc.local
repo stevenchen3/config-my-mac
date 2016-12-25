@@ -1,5 +1,3 @@
-" Put all plugin related settings here
-"
 " -----------------------------------------------------------------------------
 " YouCompleteMe global settings
 "
@@ -10,7 +8,10 @@
 "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 " Set the global config for C-family language auto-completion. REQUIRED
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" This file can be found at
+" '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" Here, copy it to '/usr/local/etc/vim.d'
+let g:ycm_global_ycm_extra_conf = '/usr/local/etc/vim.d/.ycm_extra_conf.py'
 
 " Disable auto-completion for the following file types. By default,
 " auto-completion has been disabled for 'markdown' and 'text' files. To enable
@@ -34,10 +35,35 @@ let g:ycm_filetype_blacklist = {
 "
 " let g:ycm_filetype_whitelist = { '*': 1 }
 
+" Map GoTo command to '\gt' in normal mode, move cursor in the word and type
+" \gt in normal mode to go to definition, CTLR + O to back to the previous
+" position. Currently, this means that it tries to look up the symbol under the
+" cursor and jumps to its definition if possible; if the definition is not
+" accessible from the current translation unit, jumps to the symbol's
+" declaration. For C/C++/Objective-C, it first tries to look up the current line
+" for a header and jump to it. For C#, implementations are also considered and
+" preferred.
+"
+" Supported in filetypes: c, cpp, objc, objcpp, cs, go, javascript,
+" python, rust
+"
+" See https://github.com/Valloric/YouCompleteMe#goto-commands
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+
+" Look up the symbol under the cursor and jumps to its definition. Supported in
+" filetypes: c, cpp, objc, objcpp, cs, go, javascript, python, rust, typescript
+nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+
+" Look up the current line for a header and jumps to it. Supported in filetypes
+" c, cpp, objc, objcpp
+nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
+
+" Look up the symbol under the cursor and jumps to its declaration. Supported
+" in filetypes: c, cpp, objc, objcpp, cs, go, python, rust
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+
 " -----------------------------------------------------------------------------
 " Clang tooling for LLVM, clang-check integration (llvm required)
-"
-" A courtesy of Maximum Awesome (https://github.com/square/maximum-awesome)
 "
 " This is for your C-family code checking and analysis.
 " If you do not need clang-check, please comment lines below until next section
@@ -89,7 +115,7 @@ nmap <silent> <F5> :call ClangCheck()<CR><CR>
 " 'clang-format' is required. To install: 'brew install clang-format'
 "
 " Config shortcut for triggering the source code format for C family.
-" Press 'Control' and 'i' in INSERT mode to trigger the fomartting
+" Press 'Control' and 'i' in NORMAL mode to trigger the fomartting
 map  <C-I> :pyf      /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
 imap <C-I> <ESC>:pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
 imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang-format.py<CR>
@@ -100,8 +126,8 @@ imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/2016-08-03/share/clang/clang
 " 'scalariform' is required. To install: 'brew install scalariform'
 " If you do not require Scala code auto-formatting, comment this section.
 "
-" To format Scala source, type ',st' (excluding single quotes) in normal mode.
-map ,st :%!java -jar /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
+" To format Scala source, type 'sft' (excluding single quotes) in normal mode.
+map sft :%!java -jar /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
 
 " -----------------------------------------------------------------------------
 " Settings for plugin 'airblade/vim-gitgutter'
