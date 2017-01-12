@@ -174,3 +174,6 @@ let g:snips_trigger_key = '<F2>'
 
 " Customize the indent line color
 let g:indentLine_color_term = 232
+
+" Keep conceal setting, e.g., display double quotes in Json string
+let g:indentLine_setConceal = 0
