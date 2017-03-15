@@ -60,7 +60,9 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'vim-scripts/auto-pairs-gentle'
 
 " Markdown syntax highlight and support
-Plugin 'gabrielelana/vim-markdown'
+"Plugin 'gabrielelana/vim-markdown'  " Caused vim hanging
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " Color scheme 'solarized' for iTerm, optional
 "Plugin 'vim-scripts/Solarized'         " Color scheme 'solarized' for iTerm, optional
