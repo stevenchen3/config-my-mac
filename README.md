@@ -36,6 +36,7 @@ Next, do the following in said order:
     - `cd ~/.vim/bundle/YouCompleteMe`
     - `./install.py --clang-completer` for C-family syntax support OR `./install.py` without
       C-family syntax support.
++ copy `.ycm_extra_conf.py` to `/usr/local/etc/vim.d` (create this directory if not exist)
 
 Now, you're all set!
 

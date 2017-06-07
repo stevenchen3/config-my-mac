@@ -178,6 +178,12 @@ let g:indentLine_color_term = 232
 " Keep conceal setting, e.g., display double quotes in Json string
 let g:indentLine_setConceal = 0
 
+" -----------------------------------------------------------------------------
+" Settings for plugin `plasticboy/vim-markdown`
+" Disable folding
+let g:vim_markdown_folding_disabled = 1
+
+" -----------------------------------------------------------------------------
 " Integrate `scalariform` with vim
 " See https://github.com/scala-ide/scalariform
 au BufEnter *.scala setl formatprg=java\ -jar\ /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar\ -f\ -q\ +compactControlReadability\ +alignParameters\ +alignSingleLineCaseStatements\ +doubleIndentClassDeclaration\ +rewriteArrowSymbols\ +preserveSpaceBeforeArguments\ --stdin\ --stdout
