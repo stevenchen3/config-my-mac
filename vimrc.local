@@ -179,6 +179,11 @@ let g:indentLine_color_term = 232
 let g:indentLine_setConceal = 0
 
 " -----------------------------------------------------------------------------
+" Settings for plugin `derekwyatt/vim-scala`
+" This is a Scaladoc comment using the recommended indentation
+let g:scala_scaladoc_indent=1
+
+" -----------------------------------------------------------------------------
 " Settings for plugin `plasticboy/vim-markdown`
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
