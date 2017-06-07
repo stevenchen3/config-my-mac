@@ -25,6 +25,8 @@ configure your `vim` environment.
 Next, do the following in said order:
 
 + copy `vimrc` to `~/.vimrc`
++ edit `vimrc.local` by changing `<version-date>` to match the version folder name in
+  `/user/local/Cellar/clang-format/`
 + copy `vimrc.local` to `~/.vimrc.local`
 + copy `vimrc.bundles` to `~/.vimrc.bundles`
 + edit `~/.vimrc.bundles` to add or remove plugins (also update plugin settings in `~/.vimrc.local`
@@ -36,6 +38,7 @@ Next, do the following in said order:
       C-family syntax support.
 
 Now, you're all set!
+
 
 # Gotchar
 
