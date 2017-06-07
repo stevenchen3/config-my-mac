@@ -177,3 +177,6 @@ let g:indentLine_color_term = 232
 
 " Keep conceal setting, e.g., display double quotes in Json string
 let g:indentLine_setConceal = 0
+
+" Integrate `scalariform` with vim
+au BufEnter *.scala setl formatprg=java\ -jar\ /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar\ -f\ -q\ +compactControlReadability\ +alignParameters\ +alignSingleLineCaseStatements\ +doubleIndentClassDeclaration\ +rewriteArrowSymbols\ +preserveSpaceBeforeArguments\ --stdin\ --stdout
