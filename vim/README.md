@@ -9,7 +9,7 @@ version vim via `brew`.
 # Getting Started
 
 Make sure you have the following packages installed and configured properly before proceed to
-configure your `vim` environment.
+configure your `vim` environment, if they're not done.
 
 + Latest version `Xcode` and its command line tools (this may take a while)
 + Latest version `Homebrew` for package management in `OSX` (see http://brew.sh/)
