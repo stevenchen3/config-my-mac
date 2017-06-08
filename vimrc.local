@@ -192,3 +192,9 @@ let g:vim_markdown_folding_disabled = 1
 " Integrate `scalariform` with vim
 " See https://github.com/scala-ide/scalariform
 au BufEnter *.scala setl formatprg=java\ -jar\ /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar\ -f\ -q\ +compactControlReadability\ +alignParameters\ +alignSingleLineCaseStatements\ +doubleIndentClassDeclaration\ +rewriteArrowSymbols\ +preserveSpaceBeforeArguments\ --stdin\ --stdout
+
+" -----------------------------------------------------------------------------
+"  Settings for `Chiel92/vim-autoformat`
+noremap <F5> :Autoformat<CR>
+let g:formatdef_scalafmt = "'scalafmt --stdin'"
+let g:formatters_scala = ['scalafmt']

@@ -66,3 +66,7 @@ Plugin 'plasticboy/vim-markdown'
 
 " Color scheme 'solarized' for iTerm, optional
 "Plugin 'vim-scripts/Solarized'         " Color scheme 'solarized' for iTerm, optional
+
+" vim autoformat
+" Particularly used for `scalafmt`
+Plugin 'Chiel92/vim-autoformat'
