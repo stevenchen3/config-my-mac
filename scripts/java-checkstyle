@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# This is a wrapper that wraps the checkstyle job.
+
+check_config=/usr/local/etc/checkstyle.d/google_checks.xml
+if [[ $1 = -* ]]; then
+  echo "Checking style using customized checks"
+  /usr/local/bin/checkstyle "$@"
+else
+  echo "Checking style using Google checks '$check_config'..."
+  /usr/local/bin/checkstyle -c $check_config "$@"
+fi
