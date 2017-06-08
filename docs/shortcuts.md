@@ -3,6 +3,7 @@
 ## Plugin shortcuts
 
 + `CTRL + i` or `TAB`: normal mode, format C-family source codes
++ `F5`: normal mode, format Scala source codes
 + `F2`: insert mode, e.g., type `for<F2` to auto-generate snippets
 + `:x, yCommentary`: normal mode, comment or uncomment lines from x to y
 + `cs '"`: normal mode, selected word, replace pair
