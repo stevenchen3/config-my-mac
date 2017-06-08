@@ -85,6 +85,8 @@ vimrc_bundles="$HOME/.vimrc_bundles"
 backup_file "${vimrc_conf}"    && cp ./vim/vimrc ${vimrc_conf}
 backup_file "${vimrc_local}"   && cp ./vim/vimrc.local ${vimrc_local}
 backup_file "${vimrc_bundles}" && cp ./vim/vimrc.bundles ${vimrc_bundles}
+clang_release_date=`ls -t /usr/local/Cellar/clang-format | awk 'NR==1{print $1}'`
+sed -i -e 's/__CHANGEME__/'"${clang_release_date}"'/g' ${vimrc_local}
 
 # Install `vim` plugins
 vim -c PluginInstall

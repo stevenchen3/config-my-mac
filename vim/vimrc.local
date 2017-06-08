@@ -120,9 +120,9 @@ nmap <silent> <F5> :call ClangCheck()<CR><CR>
 "
 " Config shortcut for triggering the source code format for C family.
 " Press 'Control' and 'i' in NORMAL mode to trigger the fomartting
-map  <C-I> :pyf      /usr/local/Cellar/clang-format/<version-date>/share/clang/clang-format.py<CR>
-imap <C-I> <ESC>:pyf /usr/local/Cellar/clang-format/<version-date>/share/clang/clang-format.py<CR>
-imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/<version-date>/share/clang/clang-format.py<CR>
+map  <C-I> :pyf      /usr/local/Cellar/clang-format/__CHANGEME__/share/clang/clang-format.py<CR>
+imap <C-I> <ESC>:pyf /usr/local/Cellar/clang-format/__CHANGEME__/share/clang/clang-format.py<CR>
+imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/__CHANGEME__/share/clang/clang-format.py<CR>
 
 " -----------------------------------------------------------------------------
 " Shortcut to trigger Scala source code formatting
