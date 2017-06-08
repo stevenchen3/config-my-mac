@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/local/opt/style/cpplint.py --linelength=100 $@
