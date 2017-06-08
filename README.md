@@ -46,9 +46,10 @@ Configure or install the following if they're not done.
     - `brew install google-java-format`
     - Copy directory to `checkstyle.d` to `/usr/local/etc/checkstyle.d`
     - Copy wrapper script `scripts/java-checkstyle` to `/usr/local/bin/java-checkstyle`
-+ Install Scala formatter and checker (scalariform, scalastyle)
++ Install Scala formatter and checker (scalastyle, scalariform, or scalafmt)
     - `brew install scalastyle`
     - `brew install scalariform`
+    - `brew install -HEAD olafurpg/scalafmt/scalafmt`
 + Configure vim (See `README.md` directory `vim` for details)
     - Install Vundle (refer to https://github.com/VundleVim/Vundle.vim#about)
     - Install cmake `brew install cmake`
@@ -60,8 +61,6 @@ Configure or install the following if they're not done.
     - `brew cask install quicklook-json`
 + Install `tree` command line tool to list directory structure
   - `brew install tree`
-+ Install `scalafmt`, a code formatter for Scala
-  - `brew install -HEAD olafurpg/scalafmt/scalafmt`
 
 ## Work tools
 
