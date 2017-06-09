@@ -2,29 +2,32 @@
 
 ## Development environment configuration
 
-Configure or install the following if they're not done.
+Configure or install the following if you have not yet done so. Skip steps otherwise. Alternatively,
+you may run the `setup.sh` script to do most of the following automatically.
 
-+ Configure `~/.vimrc` (refer to `vim/vimrc`)
-+ Configure `~/.bash_profile` (refer to `bash/bash_profile`)
-+ Install font `Inconsolata` (refer to `fonts`)
-+ Install JDK latest version (download from Oracle official website)
-    - Check if `JAVA_HOME` is set in `~/.bash_profile`
-+ Install brew (visit http://brew.sh)
++ Install latest `Xcode` from AppStore (it may take a while) OR
+    - `xcode-select --install`
+    - `git --version` (verify the installation and accept License terms and conditions)
++ Install Homebrew to manage packages (see http://brew.sh for details)
     - `/usr/bin/ruby -e "$(curl -fsSL
       https://raw.githubusercontent.com/Homebrew/install/master/install)"`
++ Install Java JDK latest version
+    - `brew cask install java`
 + Install customized vim if any (e.g., install other distribution on OS X)
     - OS X shipped `vim` with `-clipboard` (execute command `vim --version` to check), however,
-      `+clipboard` is required for copying to/pasting from system clipboard in vim
-    - YouCompleteMe does not work well with the default vim
+      `+clipboard` is required for copying to/pasting from system clipboard in vim. And
+      `YouCompleteMe` does not work well with the default vim
     - `brew install vim`
 + Install git command and SSH key (e.g., bitbucket, gitlab, github)
     - Integrate vim-gitgutter plugin that tells the changes of a file
     - Configure the vim installed by brew as the editor `git config --global core.editor
       /usr/local/bin/vim`
-+ Install wget
++ Install wget, tree
     - `brew install wget`
-+ Install OpenVPN client (Tunnelblick) and configure VPN
-    - Download from OpenVPN website (visit https://openvpn.net)
+    - `brew install tree` (list directory structure)
++ Install OpenVPN client (Tunnelblick) and configure VPN (excluded from the `setup.sh`)
+    - Download from OpenVPN website (visit https://openvpn.net) OR
+    - `brew install openvpn`
 + Install Scala JDK, SBT (latest version)
     - `brew install scala`
     - `brew install sbt`
@@ -37,10 +40,9 @@ Configure or install the following if they're not done.
     - Create soft link: `ln -s /usr/local/opt/style/bin/cppstyle /usr/local/bin/cppstyle`
     - Create soft link: `ln -s /usr/local/opt/style/bin/google-cpp-style
       /usr/local/bin/google-cpp-style`
-+ Install latest `Xcode` from AppStore (it may take a while)
-    - It should automatically install command-line tools (if not, install them manually)
-+ Install LLVM
++ Install LLVM, Cmake
     - `brew install llvm`
+    - `brew install cmake` (required to compile `YouCompleteMe` plugin)
 + Install Java formatter and checker (checkstyle, Google Java Format)
     - `brew install checkstyle`
     - `brew install google-java-format`
@@ -50,17 +52,14 @@ Configure or install the following if they're not done.
     - `brew install scalastyle`
     - `brew install scalariform`
     - `brew install -HEAD olafurpg/scalafmt/scalafmt`
-+ Configure vim (See `README.md` directory `vim` for details)
-    - Install Vundle (refer to https://github.com/VundleVim/Vundle.vim#about)
-    - Install cmake `brew install cmake`
-    - Install `YouCompleteMe` plugin, see https://github.com/Valloric/YouCompleteMe#mac-os-x
-+ Install `ctags` and configure it with vim to index codebase, optional
-    - Refer to https://andrew.stwrt.ca/posts/vim-ctags/ (TODO)
-+ Install `quicklook-json` plugin for JSON preview (optional), see
++ Install `ctags` and configure it with vim to index codebase, optional (excluded from the `setup.sh`)
+    - Refer to https://andrew.stwrt.ca/posts/vim-ctags/
++ Install `quicklook-json` plugin for JSON preview (optional, excluded from the `setup.sh`), see
   https://github.com/sindresorhus/quick-look-plugins
     - `brew cask install quicklook-json`
-+ Install `tree` command line tool to list directory structure
-  - `brew install tree`
++ Install font `Inconsolata` (refer to `fonts`)
++ Configure `~/.bash_profile` (refer to `bash/bash_profile`)
++ Configure vim (See `README.md` directory `vim` for details)
 
 ## Work tools
 
@@ -75,6 +74,7 @@ Configure or install the following if they're not done.
 ## Other configurations
 
 + Install Google Chrome browser
+    - `brew cask install google-chrome`
 
 ## Gotchars
 
