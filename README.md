@@ -42,7 +42,7 @@ you may run the `setup.sh` script to do most of the following automatically.
       /usr/local/bin/google-cpp-style`
 + Install LLVM, Cmake
     - `brew install llvm`
-    - `brew install cmake` (required to compile `YouCompleteMe` plugin)
+    - `brew install cmake` # required to compile `YouCompleteMe` plugin
 + Install Java formatter and checker (checkstyle, Google Java Format)
     - `brew install checkstyle`
     - `brew install google-java-format`
