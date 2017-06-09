@@ -10,6 +10,7 @@ export LSCOLORS=gxfxaxdxcxegedabagacad
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
+alias ld='ls -l | grep "^d"' # List only directories
 alias l='ls -CF'
 
 # -------------------------------------------------------------------------------------------------
