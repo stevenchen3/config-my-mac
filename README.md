@@ -64,7 +64,7 @@ you may run the `setup.sh` script to do most of the following automatically.
 ## Work tools
 
 + Configure work email
-+ Install communication tool (e.g., Slack, Skype for Business, WhatsApp)
++ Install communication tools (e.g., Slack, Skype for Business, WhatsApp)
 + Install notes (e.g., OneNote)
 + Install `MacTex` (optional) for `Tex` projects (e.g., paper writing)
     - See http://www.tug.org/mactex/ for download and installation guide
