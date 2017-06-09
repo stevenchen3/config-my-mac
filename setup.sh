@@ -7,7 +7,7 @@ checked="${GREEN}√${NC}"
 # Install `xcode` command line tool first
 if ! package_loc="$(xcode-select -p)" || [ -z "$package_loc" ]; then
   echo "Installing Xcode Command Line Tools"
-  xcode-select --install
+  xcode-select --install # git and other development tools will be installed
 else
   printf "${checked}Xcode developer tools have been installed, skip install xcode\n"
 fi
@@ -35,9 +35,10 @@ install_package cmake cmake   "brew install cmake"
 install_package tree tree     "brew install tree"
 install_package wget wget     "brew install wget"
 
-# Install `vim` as OSX's default one ships with `-clipboard`
+# Install `vim` as OSX's default one ships with `-clipboard`, but we need `+clipboard` to enable
+# copy to clipboard across terminals
 brew install vim
-# Config git to use customized vim
+# Config git to use customized vim rather than the default `vim`
 git config --global core.editor /usr/local/bin/vim
 
 backup_file() {
@@ -86,11 +87,11 @@ backup_file "${vimrc_conf}"    && cp ./vim/vimrc ${vimrc_conf}
 backup_file "${vimrc_local}"   && cp ./vim/vimrc.local ${vimrc_local}
 backup_file "${vimrc_bundles}" && cp ./vim/vimrc.bundles ${vimrc_bundles}
 clang_release_date=`ls -t /usr/local/Cellar/clang-format | awk 'NR==1{print $1}'`
-sed -i -e 's/__CHANGEME__/'"${clang_release_date}"'/g' ${vimrc_local}
+sed -i '' -e 's/__CHANGEME__/'"${clang_release_date}"'/g' ${vimrc_local} # no backup before replacement
 
 # Install `vim` plugins
-vim -c PluginInstall
-$HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer
+vim -c PluginInstall -c q -c q
+$HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer # `cmake` is required
 vim_d="/usr/local/etc/vim.d"
 mkdir -p ${vim_d} && cp ./vim/.ycm_extra_conf.py ${vim_d}/
 
