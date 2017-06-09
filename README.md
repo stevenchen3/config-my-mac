@@ -51,7 +51,7 @@ you may run the `setup.sh` script to do most of the following automatically.
 + Install Scala formatter and checker (scalastyle, scalariform, or scalafmt)
     - `brew install scalastyle`
     - `brew install scalariform`
-    - `brew install -HEAD olafurpg/scalafmt/scalafmt`
+    - `brew install --HEAD olafurpg/scalafmt/scalafmt`
 + Install `ctags` and configure it with vim to index codebase, optional (excluded from the `setup.sh`)
     - Refer to https://andrew.stwrt.ca/posts/vim-ctags/
 + Install `quicklook-json` plugin for JSON preview (optional, excluded from the `setup.sh`), see
