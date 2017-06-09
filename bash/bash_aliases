@@ -1,0 +1,21 @@
+# Add other customized shell settings here
+
+# -------------------------------------------------------------------------------------------------
+# JVM and JDK configuration
+#
+# Java 8 does not support "MaxPermSize" option, used to set JVM options launched by scala
+export JAVA_OPTS="-Xms1024m -Xmx2048m"
+# If scala is installed via 'brew install scala', it requires JAVA_HOME is set properly
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+# -------------------------------------------------------------------------------------------------
+# Enable MacText command line
+#
+# In OS X EI Capitan or later, writting to '/usr' is NOT allowed even with administrative
+# privileges, thus the usualy symbolic link to the active TEX distribution '/usr/texbin' is removed
+# and we initially cannot find the command line after the installation.
+# See http://www.tug.org/mactex/UpdatingForElCapitan.pdf
+#
+# Here is a simple solution to append '/Library/TeX/texbin' to PATH to fix this issue without
+# changing any other installation settings.
+export PATH=$PATH:/Library/TeX/texbin

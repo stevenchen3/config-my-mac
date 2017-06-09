@@ -49,8 +49,9 @@ backup_file() {
 
 # Config bash preferences
 bash_conf="$HOME/.bash_profile"
-backup_file "${bash_conf}"
-cp ./bash/bash_profile ${bash_conf}
+bash_conf_local="$HOME/.bash_aliases"
+backup_file "${bash_conf}" && cp ./bash/bash_profile ${bash_conf}
+backup_file "${bash_conf_local}" && cp ./bash/bash_profile.local ${bash_conf_local}
 
 # Install vundle
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim

@@ -76,6 +76,17 @@ you may run the `setup.sh` script to do most of the following automatically.
 + Install Google Chrome browser
     - `brew cask install google-chrome`
 
+## System preferences
+If this is a new computer, there are a couple tweaks I like to make to the System Preferences.
+Feel free to follow these, or to ignore them, depending on your personal preferences.
+
+In Apple Icon > System Preferences:
+
++ Trackpad > Tap to click
++ Keyboard > Key Repeat > Fast (all the way to the right)
++ Keyboard > Delay Until Repeat > Short (all the way to the right)
++ Dock > Automatically hide and show the Dock
+
 ## Gotchars
 
 ### Change default trigger key for Vim SnipMate plugin

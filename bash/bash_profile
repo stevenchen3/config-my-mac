@@ -1,4 +1,5 @@
-# User specific settings
+# General user specific settings
+#
 # -------------------------------------------------------------------------------------------------
 # set the color of username and hostname promted in terminal
 # the username and hostname will look like 'user@hostname:~$' in your terminal session
@@ -27,16 +28,13 @@ export JAVA_OPTS="-Xms1024m -Xmx2048m"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 # -------------------------------------------------------------------------------------------------
-# Enable MacText command line
-#
-# In OS X EI Capitan or later, writting to '/usr' is NOT allowed even with administrative
-# privileges, thus the usualy symbolic link to the active TEX distribution '/usr/texbin' is removed
-# and we initially cannot find the command line after the installation.
-# See http://www.tug.org/mactex/UpdatingForElCapitan.pdf
-#
-# Here is a simple solution to append '/Library/TeX/texbin' to PATH to fix this issue without
-# changing any other installation settings.
-export PATH=$PATH:/Library/TeX/texbin
+export PATH=$PATH:/usr/local/sbin  # macOS Sierra does not include `sbin` in PATH
 
 # -------------------------------------------------------------------------------------------------
-export PATH=$PATH:/usr/local/sbin  # macOS Sierra does not include `sbin` in PATH
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
