@@ -8,6 +8,7 @@ checked="${GREEN}√${NC}"
 if ! package_loc="$(xcode-select -p)" || [ -z "$package_loc" ]; then
   echo "Installing Xcode Command Line Tools"
   xcode-select --install # git and other development tools will be installed
+  git --version # verify installation and accept license terms
 else
   printf "${checked}Xcode developer tools have been installed, skip install xcode\n"
 fi

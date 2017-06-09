@@ -14,17 +14,17 @@ you may run the `setup.sh` script to do most of the following automatically.
 + Install Java JDK latest version
     - `brew cask install java`
 + Install customized vim if any (e.g., install other distribution on OS X)
-    - OS X shipped `vim` with `-clipboard` (execute command `vim --version` to check), however,
+    - OS X ships `vim` with `-clipboard` (run `vim --version` to check), however,
       `+clipboard` is required for copying to/pasting from system clipboard in vim. And
       `YouCompleteMe` does not work well with the default vim
     - `brew install vim`
 + Install git command and SSH key (e.g., bitbucket, gitlab, github)
-    - Integrate vim-gitgutter plugin that tells the changes of a file
+    - Integrate vim-gitgutter plugin that tells the changes of a file (included in vim configuration)
     - Configure the vim installed by brew as the editor `git config --global core.editor
       /usr/local/bin/vim`
 + Install wget, tree
     - `brew install wget`
-    - `brew install tree` (list directory structure)
+    - `brew install tree` # list directory structure
 + Install OpenVPN client (Tunnelblick) and configure VPN (excluded from the `setup.sh`)
     - Download from OpenVPN website (visit https://openvpn.net) OR
     - `brew install openvpn`
