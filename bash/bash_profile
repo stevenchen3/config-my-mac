@@ -36,3 +36,4 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # Here is a simple solution to append '/Library/TeX/texbin' to PATH to fix this issue without
 # changing any other installation settings.
 export PATH=$PATH:/Library/TeX/texbin
+export PATH=$PATH:/usr/local/sbin
