@@ -1,4 +1,11 @@
-# Configuring Computing Environment on OS X
+# Configuring Mac for Development
+
+My preferred configuration on MacBook for development.
+
++ [Development environment configuration](#dev-env-config)
++ [Work tools](#work-tools)
++ [System preferences](#system-preferences)
++ [Terminal preferences](#terminal-preferences)
 
 ## Development environment configuration
 
@@ -22,7 +29,7 @@ you may run the `setup.sh` script to do most of the following automatically.
     - Integrate vim-gitgutter plugin that tells the changes of a file (included in vim configuration)
     - Configure the vim installed by brew as the editor `git config --global core.editor
       /usr/local/bin/vim`
-+ Install wget, tree
++ Install util tools: wget, tree
     - `brew install wget`
     - `brew install tree` # list directory structure
 + Install OpenVPN client (Tunnelblick) and configure VPN (excluded from the `setup.sh`)
@@ -70,10 +77,7 @@ you may run the `setup.sh` script to do most of the following automatically.
     - See http://www.tug.org/mactex/ for download and installation guide
     - See http://www.tug.org/mactex/sierra.html to tips to fix issues may exist in EI Capitan and
     later
-
-## Other configurations
-
-+ Install Google Chrome browser
++ Install Google Chrome browser (Chrome is my favourite browser!)
     - `brew cask install google-chrome`
 
 ## System preferences
@@ -82,10 +86,18 @@ Feel free to follow these, or to ignore them, depending on your personal prefere
 
 In Apple Icon > System Preferences:
 
-+ Trackpad > Tap to click
-+ Keyboard > Key Repeat > Fast (all the way to the right)
-+ Keyboard > Delay Until Repeat > Short (all the way to the right)
-+ Dock > Automatically hide and show the Dock
++ `Trackpad` > `Tap to click`
++ `Keyboard` > Key Repeat > Fast (all the way to the right)
++ `Keyboard` > Delay Until Repeat > Short (all the way to the right)
++ `Accessibility` > `Mouse & Trackpad` > `Trackpad options` > Enable dragging: three finger drag
+
+## Terminal preferences
+
+Open `Terminal` > `Preferences`
+
++ Make `Pro` as default
++ `Text` > Font (Inconsolata, 14 pt)
++ `Window` > Columns: 130, Rows: 36
 
 ## Gotchars
 
