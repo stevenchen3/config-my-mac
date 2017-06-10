@@ -97,7 +97,8 @@ sed -i '' -e 's/__CHANGEME__/'"${clang_release_date}"'/g' ${vimrc_local} # no ba
 vim -c PluginInstall -c q -c q
 $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer # `cmake` is required
 vim_d="/usr/local/etc/vim.d"
-mkdir -p ${vim_d} && cp ./vim/.ycm_extra_conf.py ${vim_d}/
+ycm_extra_conf="$HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+mkdir -p ${vim_d} && cp ${ycm_extra_conf} ${vim_d}/
 
 # Install, Scala, SBT
 install_package scala Scala   "brew install scala"
