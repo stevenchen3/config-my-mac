@@ -1,4 +1,4 @@
-# VIM configuration for Mac OS X
+# VIM configuration for Mac
 
 This is my preferred `vim` configuration for development environment. It works good enough for me.
 But some of them may not make sense to you, thus, you can remove those. And in this configuration,
@@ -41,7 +41,7 @@ Next, do the following in said order:
   accordingly) based on what you need.
 + launch `vim` and enter `:PluginInstall` to install plugins (it may take a while) OR
     - `vim -c PluginInstall -c q -c q`
-+ Open your terminal and do the following (must after installing plugins)
++ Open your terminal and do the following enable `ycmd` server (must after installing plugins)
     - `cd ~/.vim/bundle/YouCompleteMe`
     - `./install.py --clang-completer` for C-family syntax support OR `./install.py` without
       C-family syntax support.
