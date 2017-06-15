@@ -70,3 +70,7 @@ Plugin 'plasticboy/vim-markdown'
 " vim autoformat
 " Particularly used for `scalafmt`
 Plugin 'Chiel92/vim-autoformat'
+
+" A tree explorer plugin for vim
+" See https://github.com/scrooloose/nerdtree
+Plugin 'scrooloose/nerdtree'
