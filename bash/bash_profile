@@ -31,6 +31,11 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export PATH=$PATH:/usr/local/sbin  # macOS Sierra does not include `sbin` in PATH
 
 # -------------------------------------------------------------------------------------------------
+# Bash history file settings
+export HISTFILESIZE=10000000
+export HISTSIZE=10000000
+
+# -------------------------------------------------------------------------------------------------
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
