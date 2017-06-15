@@ -1,4 +1,4 @@
-# General user specific settings
+# General settings
 #
 # -------------------------------------------------------------------------------------------------
 # set the color of username and hostname promted in terminal
@@ -20,14 +20,6 @@ alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
 
 # -------------------------------------------------------------------------------------------------
-# JVM and JDK configuration
-#
-# Java 8 does not support "MaxPermSize" option, used to set JVM options launched by scala
-export JAVA_OPTS="-Xms1024m -Xmx2048m"
-# If scala is installed via 'brew install scala', it requires JAVA_HOME is set properly
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
-# -------------------------------------------------------------------------------------------------
 export PATH=$PATH:/usr/local/sbin  # macOS Sierra does not include `sbin` in PATH
 
 # -------------------------------------------------------------------------------------------------
@@ -42,4 +34,3 @@ export HISTSIZE=10000000
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
-
