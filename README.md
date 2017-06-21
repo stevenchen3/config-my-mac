@@ -99,7 +99,7 @@ Open `Terminal` > `Preferences`
 + `Text` > Font (Inconsolata, 14 pt)
 + `Window` > Columns: 130, Rows: 36
 
-## Gotchars
+## Gotchas
 
 ### Change default trigger key for Vim SnipMate plugin
 
