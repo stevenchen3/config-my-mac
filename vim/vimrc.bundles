@@ -74,3 +74,7 @@ Plugin 'Chiel92/vim-autoformat'
 " A tree explorer plugin for vim
 " See https://github.com/scrooloose/nerdtree
 Plugin 'scrooloose/nerdtree'
+
+" Syntax checking hacks for vim
+" See https://github.com/vim-syntastic/syntastic
+" Plugin 'vim-syntastic/syntastic'
