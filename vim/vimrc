@@ -140,6 +140,8 @@ hi CursorLine cterm=NONE ctermbg=52 ctermfg=white guibg=darkred guifg=white
 inoremap jj <ESC>
 " Shortcut for ⇒. This is specially for Scala developers
 inoremap => <C-v>u21d2
+inoremap \bot <C-v>u22A5
+inoremap \top <C-v>u22A4
 
 " -----------------------------------------------------------------------------
 " Copy and paste clipboard settings (ctl + c, and ctl + v), Optional
