@@ -112,7 +112,7 @@ set laststatus=2       " Always show status line
 set list               " Show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 set number             " Show line number
-"set relativenumber     " Use relative line number
+set relativenumber     " Use relative line number
 set ruler              " Show where you are
 set scrolloff=3        " Show context above/below cursorline
 set shiftwidth=2       " Normal mode indentation commands use 2 spaces
@@ -197,3 +197,13 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+" -----------------------------------------------------------------------------
+" Toggle absolute line number and relative line number
+" See https://jeffkreeftmeijer.com/vim-number
+"
+" To disable, comment line 'set relativenumber' and below 5 lines
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
