@@ -50,7 +50,7 @@ Next, do the following in said order:
 Now, you're all set!
 
 
-# Gotchar
+# Gotcha
 
 ## YouCompleteMe unavailable error
 
