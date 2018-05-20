@@ -78,3 +78,7 @@ Plugin 'scrooloose/nerdtree'
 " Syntax checking hacks for vim
 " See https://github.com/vim-syntastic/syntastic
 " Plugin 'vim-syntastic/syntastic'
+
+" Solidity syntax plugin
+" See https://github.com/tomlion/vim-solidity
+Plugin 'tomlion/vim-solidity'
