@@ -72,7 +72,7 @@ you may run the `setup.sh` script to do most of the following automatically.
 
 + Configure work email
 + Install communication tools (e.g., Slack, Skype for Business, WhatsApp)
-+ Install notes (e.g., OneNote)
++ Install notes (e.g., OneNote, Evernote)
 + Install `MacTex` (optional) for `Tex` projects (e.g., paper writing)
     - See http://www.tug.org/mactex/ for download and installation guide
     - See http://www.tug.org/mactex/sierra.html to tips to fix issues may exist in EI Capitan and
@@ -98,6 +98,7 @@ Open `Terminal` > `Preferences`
 + Make `Pro` as default
 + `Text` > Font (Inconsolata, 14 pt)
 + `Window` > Columns: 130, Rows: 36
++ Color (RGB): 37/37/37
 
 ## Gotchas
 
