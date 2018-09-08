@@ -130,7 +130,8 @@ set hlsearch           " Set highlight search result, with default color
 set whichwrap+=<,>,h,l,[,]  " Wrap arrow keys between lines
 set cursorline         " High light current cursor with dark red (52) color
 hi CursorLine cterm=NONE ctermbg=52 ctermfg=white guibg=darkred guifg=white
-
+set conceallevel=0     " diable auto syntax conceal, e.g., JSON double quotes,
+                       " as vim 8.1 has '+conceal'
 " -----------------------------------------------------------------------------
 " Keyboard shortcuts
 "
