@@ -19,3 +19,11 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # Here is a simple solution to append '/Library/TeX/texbin' to PATH to fix this issue without
 # changing any other installation settings.
 export PATH=$PATH:/Library/TeX/texbin
+
+# -------------------------------------------------------------------------------------------------
+# This fixes the issue the following error message when using sbt-pgp to sign artifacts
+#
+# [error] gpg: signing failed: Inappropriate ioctl for device
+#
+# See https://github.com/keybase/keybase-issues/issues/2798 for details
+export GPG_TTY=$(tty)
