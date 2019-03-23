@@ -82,3 +82,8 @@ Plugin 'scrooloose/nerdtree'
 " Solidity syntax plugin
 " See https://github.com/tomlion/vim-solidity
 Plugin 'tomlion/vim-solidity'
+
+" Plugin for Golang
+" See https://github.com/fatih/vim-go
+" Autocompletion can be achieved together with https://github.com/mdempsky/gocode
+Plugin 'fatih/vim-go'
