@@ -27,3 +27,8 @@ export PATH=$PATH:/Library/TeX/texbin
 #
 # See https://github.com/keybase/keybase-issues/issues/2798 for details
 export GPG_TTY=$(tty)
+
+# -------------------------------------------------------------------------------------------------
+# [Optional] Golang GOPATH
+# Use a custom path
+# export GOPATH=${HOME}/Workspace/go
