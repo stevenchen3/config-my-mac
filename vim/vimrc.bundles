@@ -10,10 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 " It has clang semantic support as well.
 Plugin 'Valloric/YouCompleteMe'
 
-" Show changes (git diff) of an open file in 'gutter' instantly.
-" See https://github.com/airblade/vim-gitgutter
-Plugin 'airblade/vim-gitgutter'
-
+" Editor specific plugins
+"
 " Surroundings: parentheses, brackets, quotes, XML tags, etc It provides
 " mappings to easily delete, change and add such surroundings in pairs.
 " See https://github.com/tpope/vim-surround
@@ -28,12 +26,9 @@ Plugin 'tpope/vim-commentary'
 " See https://github.com/tpope/vim-endwise
 Plugin 'tpope/vim-endwise'
 
-" Syntax highlight for Google Protocol Buffers
-" See https://github.com/uarun/vim-protobuf
-"Plugin 'uarun/vim-protobuf'
-
-" SnipMate aims to provide support for textual snippets, similar to TextMate or other Vim plugins
-" like UltiSnips. For example, in C, typing for<tab> could be expanded to
+" SnipMate aims to provide support for textual snippets, similar to TextMate or
+" other Vim plugins like UltiSnips. For example, in C, typing for<tab> could be
+" expanded to
 "
 " for (i = 0; i < count; i++) {
 "     /* code */
@@ -41,39 +36,51 @@ Plugin 'tpope/vim-endwise'
 "
 " See https://github.com/garbas/vim-snipmate
 Plugin 'garbas/vim-snipmate'
-Plugin 'MarcWeber/vim-addon-mw-utils'  " Dependency for 'vim-snipmate', REQUIRED by 'snipmate'
-Plugin 'tomtom/tlib_vim'               " Dependency for 'vim-snipmate', REQUIRED by 'snipmate'
-Plugin 'honza/vim-snippets'            " Default snippets for 'vim-snipmate', REQUIRED by 'snipmate'
+Plugin 'MarcWeber/vim-addon-mw-utils' " Dependency for 'vim-snipmate', REQUIRED
+Plugin 'tomtom/tlib_vim'              " Dependency for 'vim-snipmate', REQUIRED
+Plugin 'honza/vim-snippets'     " Default snippets for 'vim-snipmate', REQUIRED
 
 " Display the indention levels with thin vertical lines
 " See https://github.com/Yggdroot/indentLine
 Plugin 'Yggdroot/indentLine'
-
-
-" Integration of Scala with nice convenience into vim
-" See https://github.com/derekwyatt/vim-scala
-Plugin 'derekwyatt/vim-scala'
 
 " Insert or delete brackets, parens, quotes in pair
 " e.g., type (, you will get (_), underscore is where the cursor will be
 " See https://github.com/vim-scripts/auto-pairs-gentle
 Plugin 'vim-scripts/auto-pairs-gentle'
 
+" Color scheme 'solarized' for iTerm, optional
+"Plugin 'vim-scripts/Solarized'   " Color scheme 'solarized' for iTerm, optional
+
+" A tree explorer plugin for vim
+" See https://github.com/scrooloose/nerdtree
+Plugin 'scrooloose/nerdtree'
+
+
+" Language or tools specific plugins
+"
+" Show changes (git diff) of an open file in 'gutter' instantly.
+" See https://github.com/airblade/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
+
 " Markdown syntax highlight and support
 "Plugin 'gabrielelana/vim-markdown'  " Caused vim hanging
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
-" Color scheme 'solarized' for iTerm, optional
-"Plugin 'vim-scripts/Solarized'         " Color scheme 'solarized' for iTerm, optional
+" Syntax highlight for Google Protocol Buffers
+" See https://github.com/uarun/vim-protobuf
+"Plugin 'uarun/vim-protobuf'
 
-" vim autoformat
+" Scala related plugins
+"
+" Integration of Scala with nice convenience into vim
+" See https://github.com/derekwyatt/vim-scala
+Plugin 'derekwyatt/vim-scala'
+
+" vim autoformat for Scala
 " Particularly used for `scalafmt`
 Plugin 'Chiel92/vim-autoformat'
-
-" A tree explorer plugin for vim
-" See https://github.com/scrooloose/nerdtree
-Plugin 'scrooloose/nerdtree'
 
 " Syntax checking hacks for vim
 " See https://github.com/vim-syntastic/syntastic
@@ -83,7 +90,15 @@ Plugin 'scrooloose/nerdtree'
 " See https://github.com/tomlion/vim-solidity
 Plugin 'tomlion/vim-solidity'
 
-" Plugin for Golang
+" Golang development environment settings
+"
+" Go development plugin for Vim
 " See https://github.com/fatih/vim-go
-" Autocompletion can be achieved together with https://github.com/mdempsky/gocode
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
+
+" An autocompletion daemon for the Go which is intended to be integrated with
+" your source code editor, like vim, neovim and emacs. It provides several
+" advanced capabilities, which currently includes:
+"   - Context-sensitive autocompletion
+" See https://github.com/mdempsky/gocode
+"Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
