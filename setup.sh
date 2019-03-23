@@ -4,27 +4,101 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 checked="${GREEN}√${NC} "
+
 # Install `xcode` command line tool first
-if ! package_loc="$(xcode-select -p)" || [ -z "$package_loc" ]; then
-  echo "Installing Xcode Command Line Tools"
-  xcode-select --install # git and other development tools will be installed
-  git --version # verify installation and accept license terms
-else
-  printf "${checked}Xcode developer tools have been installed, skip install xcode\n"
-fi
+install_xcode() {
+  if [ ! package_loc="$(xcode-select -p)" ] || [ -z "${package_loc}" ]; then
+    echo "Installing Xcode Command Line Tools"
+    xcode-select --install # git and other development tools will be installed
+    git --version # verify installation and accept license terms
+  else
+    printf "${checked}Xcode developer tools have been installed, skip install xcode\n"
+  fi
+}
 
 install_package() {
-  if ! package_loc="$(type -p "$1")" || [ -z "$package_loc" ]; then
-    echo "Installing '$2'"
-    eval $3
+  local PACKAGE=$1
+  local NAME=$2
+  local CMD=$3
+
+  if [ ! package_loc="$(type -p "${PACKAGE}")" ] || [ -z "${package_loc}" ]; then
+    echo "Installing '${NAME}'"
+    eval ${CMD}
   else
-    printf "${checked}$2 has been installed, '`which $1`', skip installing $2\n"
+    printf "${checked}${NAME} has been installed, '`which ${PACKAGE}`', skip installing ${NAME}\n"
   fi
 }
 
 install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
+
+# Install `vim` as OSX's default one ships with `-clipboard`, but we need `+clipboard` to enable
+# copy to clipboard across terminals
+install_vim() {
+  brew install vim
+  # Config git to use customized vim rather than the default `vim`
+  git config --global core.editor /usr/local/bin/vim
+}
+
+backup_file() {
+  local path=$1
+  if [ -f "${path}" ]; then
+    mv ${path} ${path}.bak
+  fi
+}
+
+# Config bash preferences
+configure_bash() {
+  bash_conf="$HOME/.bash_profile"
+  bash_conf_local="$HOME/.bash_aliases"
+  backup_file "${bash_conf}" && cp ./bash/bash_profile ${bash_conf}
+  backup_file "${bash_conf_local}" && cp ./bash/bash_profile.local ${bash_conf_local}
+}
+
+configure_checkstyle() {
+  checkstyle_d="/usr/local/etc/checkstyle.d"
+  backup_file "${checkstyle_d}"
+  cp -r checkstyle.d ${checkstyle_d}
+
+  java_checkstyle_script="/usr/local/bin/java-checkstyle"
+  backup_file "${java_checkstyle_script}"
+  cp ./scripts/java-checkstyle ${java_checkstyle_script}
+
+  style_wrapper_dir="/usr/local/opt/style"
+  backup_file "${style_wrapper_dir}"
+  cp -r ./style ${style_wrapper_dir}
+
+  # Create soft links for wrapper scripts
+  ln -f -s ${style_wrapper_dir}/bin/cppstyle /usr/local/bin/cppstyle
+  ln -f -s ${style_wrapper_dir}/bin/google-cpp-style /usr/local/bin/google-cpp-style
+}
+
+# Config `vim`
+configure_vim() {
+  vimrc_conf="$HOME/.vimrc"
+  vimrc_local="$HOME/.vimrc.local"
+  vimrc_bundles="$HOME/.vimrc.bundles"
+  backup_file "${vimrc_conf}"    && cp ./vim/vimrc ${vimrc_conf}
+  backup_file "${vimrc_local}"   && cp ./vim/vimrc.local ${vimrc_local}
+  backup_file "${vimrc_bundles}" && cp ./vim/vimrc.bundles ${vimrc_bundles}
+  clang_release_date=`ls -t /usr/local/Cellar/clang-format | awk 'NR==1{print $1}'`
+  sed -i '' -e 's/__CHANGEME__/'"${clang_release_date}"'/g' ${vimrc_local} # no backup before replacement
+}
+
+# Install `vim` plugins
+install_vim_plugins() {
+  vim -c PluginInstall -c q -c q
+  $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer # `cmake` is required
+  vim_d="/usr/local/etc/vim.d"
+  ycm_extra_conf="$HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+  mkdir -p ${vim_d} && cp ${ycm_extra_conf} ${vim_d}/
+}
+
+
+#### Main
+#
+install_xcode
 
 # Install `Homebrew`
 install_package brew Homebrew install_homebrew
@@ -35,26 +109,15 @@ install_package cmake cmake   "brew install cmake"
 install_package tree tree     "brew install tree"
 install_package wget wget     "brew install wget"
 
-# Install `vim` as OSX's default one ships with `-clipboard`, but we need `+clipboard` to enable
-# copy to clipboard across terminals
-brew install vim
-# Config git to use customized vim rather than the default `vim`
-git config --global core.editor /usr/local/bin/vim
-
-backup_file() {
-  if [ -f "$1" ]; then
-    mv $1 ${1}.bak
-  fi
-}
-
-# Config bash preferences
-bash_conf="$HOME/.bash_profile"
-bash_conf_local="$HOME/.bash_aliases"
-backup_file "${bash_conf}" && cp ./bash/bash_profile ${bash_conf}
-backup_file "${bash_conf_local}" && cp ./bash/bash_profile.local ${bash_conf_local}
+install_vim
+configure_bash
 
 # Install vundle
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+# git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+install_package vundle vundle "git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim"
+
+configure_vim
+install_vim_plugins # Depends on vundle
 
 # Install Java JDK 1.8, `google-java-format` requires it
 install_package javac "Java 8" "brew cask install java"
@@ -66,39 +129,7 @@ install_package google-java-format "Google Java Formatter" "brew install google-
 install_package scalastyle "Scala Style Checker"           "brew install scalastyle" # Scala code style check
 install_package scalariform "Scala Code Formatter"         "brew install scalariform" # Scala code formatter
 install_package scalafmt "Scala Code Formatter 'scalafmt'" "brew install --HEAD olafurpg/scalafmt/scalafmt" # Another Scala code formatter
-
-checkstyle_d="/usr/local/etc/checkstyle.d"
-backup_file "$checkstyle_d"
-cp -r checkstyle.d ${checkstyle_d}
-
-java_checkstyle_script="/usr/local/bin/java-checkstyle"
-backup_file "${java_checkstyle_script}"
-cp ./scripts/java-checkstyle ${java_checkstyle_script}
-
-style_wrapper_dir="/usr/local/opt/style"
-backup_file "${style_wrapper_dir}"
-cp -r ./style ${style_wrapper_dir}
-
-# Create soft links for wrapper scripts
-ln -f -s ${style_wrapper_dir}/bin/cppstyle /usr/local/bin/cppstyle
-ln -f -s ${style_wrapper_dir}/bin/google-cpp-style /usr/local/bin/google-cpp-style
-
-# Config `vim`
-vimrc_conf="$HOME/.vimrc"
-vimrc_local="$HOME/.vimrc.local"
-vimrc_bundles="$HOME/.vimrc.bundles"
-backup_file "${vimrc_conf}"    && cp ./vim/vimrc ${vimrc_conf}
-backup_file "${vimrc_local}"   && cp ./vim/vimrc.local ${vimrc_local}
-backup_file "${vimrc_bundles}" && cp ./vim/vimrc.bundles ${vimrc_bundles}
-clang_release_date=`ls -t /usr/local/Cellar/clang-format | awk 'NR==1{print $1}'`
-sed -i '' -e 's/__CHANGEME__/'"${clang_release_date}"'/g' ${vimrc_local} # no backup before replacement
-
-# Install `vim` plugins
-vim -c PluginInstall -c q -c q
-$HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer # `cmake` is required
-vim_d="/usr/local/etc/vim.d"
-ycm_extra_conf="$HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-mkdir -p ${vim_d} && cp ${ycm_extra_conf} ${vim_d}/
+configure_checkstyle
 
 # Install, Scala, SBT
 install_package scala Scala   "brew install scala"
