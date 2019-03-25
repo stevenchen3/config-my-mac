@@ -113,9 +113,17 @@ configure_checkstyle() {
   ln -f -s ${style_wrapper_dir}/bin/* /usr/local/bin/
 }
 
+# Install go from official website. See https://golang.org/doc/install
+install_golang() {
+  local VERSION=${1:-"1.12.1"}
+  local OS=${2:-"darwin"}
+  local ARCH=${3:-"amd64"}
+  curl -L --retry 3 https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz | tar -C /tmp -xzf -
+}
 
 
-#### Main
+
+######## Main ########
 #
 install_xcode
 
@@ -149,3 +157,6 @@ install_package sbt SBT       "brew install sbt"
 
 # Install docker
 install_package docker "Docker" "brew cask install docker"
+
+# Install golang
+install_golang
