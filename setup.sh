@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
