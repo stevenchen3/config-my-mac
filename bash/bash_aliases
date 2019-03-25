@@ -31,11 +31,11 @@ export GPG_TTY=$(tty)
 # -------------------------------------------------------------------------------------------------
 # [Optional] Golang GOPATH
 # Use a custom path
-# export GOPATH=$HOME/Workspace/go
+export GOPATH=$HOME/Workspace/go
 #
 # GOBIN is required by some package manager tools, like 'glide'
-# export GOBIN=$GOPATH/bin
+export GOBIN=$GOPATH/bin
 #
 # By default, go tools will be installed to '/usr/local/go'
 # See https://golang.org/doc/install#install
-# export PATH=$PATH:/usr/local/go/bin:$GOBIN
+export PATH=$PATH:/usr/local/go/bin:$GOBIN

@@ -77,7 +77,6 @@ Plugin 'plasticboy/vim-markdown'
 " Integration of Scala with nice convenience into vim
 " See https://github.com/derekwyatt/vim-scala
 Plugin 'derekwyatt/vim-scala'
-
 " vim autoformat for Scala
 " Particularly used for `scalafmt`
 Plugin 'Chiel92/vim-autoformat'
@@ -94,11 +93,10 @@ Plugin 'tomlion/vim-solidity'
 "
 " Go development plugin for Vim
 " See https://github.com/fatih/vim-go
-"Plugin 'fatih/vim-go'
-
+Plugin 'fatih/vim-go'
 " An autocompletion daemon for the Go which is intended to be integrated with
 " your source code editor, like vim, neovim and emacs. It provides several
 " advanced capabilities, which currently includes:
 "   - Context-sensitive autocompletion
 " See https://github.com/mdempsky/gocode
-"Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
