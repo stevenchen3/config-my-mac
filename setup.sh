@@ -118,10 +118,13 @@ configure_checkstyle() {
 # Alternatively, use 'brew install go', remember to set 'export GOROOT="$(brew --prefix golang)/libexec"'
 # and 'export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"' to '$HOME/.bash_aliases'
 install_golang() {
-  local VERSION=${1:-"1.12.1"}
-  local OS=${2:-"darwin"}
-  local ARCH=${3:-"amd64"}
-  curl -L --retry 3 https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz | tar -C /usr/local -xzf -
+  #local VERSION=${1:-"1.12.1"}
+  #local OS=${2:-"darwin"}
+  #local ARCH=${3:-"amd64"}
+  #curl -L --retry 3 https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz | tar -C /usr/local -xzf -
+
+  install_package go "Go"   "brew install go"
+  install_package dep "Dep" "brew install dep" # dependency manager
 }
 
 
@@ -155,8 +158,8 @@ install_package scalafmt "Scala Code Formatter 'scalafmt'" "brew install --HEAD 
 configure_checkstyle
 
 # Install, Scala, SBT
-install_package scala Scala   "brew install scala"
-install_package sbt SBT       "brew install sbt"
+install_package scala "Scala" "brew install scala"
+install_package sbt "SBT"     "brew install sbt"
 
 # Install docker
 install_package docker "Docker" "brew cask install docker"
