@@ -88,6 +88,16 @@ following line at `~/.vim/bundle/vim-snipmate/after/plugin/snipMate.vim`
 echom 'g:snips_trigger_key is deprecated. See :h snipMate-mappings'
 ```
 
+## Configure Go development environment
+
+After adding plugins
+
+- Plugin 'fatih/vim-go'
+- Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+
+Open `vim` to run `:GoInstallBinaries` to install all dependencies for `vim-go`
+
+
 # Acknowledgement
 
 A courtesy of [Maximum Awesome](https://github.com/square/maximum-awesome)
