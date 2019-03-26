@@ -114,11 +114,12 @@ configure_checkstyle() {
 }
 
 # Install go from official website. See https://golang.org/doc/install
+# sudo privileges required
 install_golang() {
   local VERSION=${1:-"1.12.1"}
   local OS=${2:-"darwin"}
   local ARCH=${3:-"amd64"}
-  curl -L --retry 3 https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz | tar -C /tmp -xzf -
+  curl -L --retry 3 https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz | tar -C /usr/local -xzf -
 }
 
 
