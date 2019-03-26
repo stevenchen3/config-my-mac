@@ -38,7 +38,8 @@ export GOBIN=$GOPATH/bin
 #
 # Set GOROOT
 export GOROOT=/usr/local/go
-#export GOROOT="$(brew --prefix golang)/libexec" # if installed using 'brew install go'
+# Use 'brew --prefix go@1.x' if the version to be installed is not current stable
+#export GOROOT="$(brew --prefix go)/libexec" # if installed using 'brew install go'
 #
 # By default, go tools will be installed to '/usr/local/go'
 # See https://golang.org/doc/install#install
