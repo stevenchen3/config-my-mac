@@ -115,6 +115,8 @@ configure_checkstyle() {
 
 # Install go from official website. See https://golang.org/doc/install
 # sudo privileges required
+# Alternatively, use 'brew install go', remember to set 'export GOROOT="$(brew --prefix golang)/libexec"'
+# and 'export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"' to '$HOME/.bash_aliases'
 install_golang() {
   local VERSION=${1:-"1.12.1"}
   local OS=${2:-"darwin"}
