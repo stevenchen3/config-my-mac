@@ -36,6 +36,10 @@ export GOPATH=$HOME/Workspace/go
 # GOBIN is required by some package manager tools, like 'glide'
 export GOBIN=$GOPATH/bin
 #
+# Set GOROOT
+export GOROOT=/usr/local/go
+#export GOROOT="$(brew --prefix golang)/libexec" # if installed using 'brew install go'
+#
 # By default, go tools will be installed to '/usr/local/go'
 # See https://golang.org/doc/install#install
-export PATH=$PATH:/usr/local/go/bin:$GOBIN
+export PATH=$PATH:$GOBIN:$GOROOT/bin
