@@ -159,3 +159,23 @@ following line at `~/.vim/bundle/vim-snipmate/after/plugin/snipMate.vim`
 ```
 echom 'g:snips_trigger_key is deprecated. See :h snipMate-mappings'
 ```
+
+### Solve `LLDB Multiple versions of Python Incompatible Error`
+
+Error message:
+
+```bash
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 52, in <module>
+    import weakref
+  File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py", line 14, in <module>
+    from _weakref import (
+ImportError: cannot import name _remove_dead_weakref
+```
+
+Workaround:
+
+```bash
+echo 'alias lldb="PATH=/usr/local/opt/llvm/bin:/usr/bin:/bin:/usr/sbin:/sbin /usr/bin/lldb"' >> ~/.bash_profile
+```
