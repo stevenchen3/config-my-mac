@@ -85,7 +85,32 @@ brew install gdb
 echo "set startup-with-shell off" >> ~/.gdbinit
 ```
 
-Code sign `gdb` by following [this guide](https://sourceware.org/gdb/wiki/PermissionsDarwin)
+Code sign `gdb` by following [this guide](https://sourceware.org/gdb/wiki/PermissionsDarwin):
+
+- Create a certificate in the System Keychain (e.g., name it as `gdb-cert`)
+- Trust the certificate for code signing
+- Sign and entitle the gdb binary
+
+```bash
+cat << EOF > gdb-entitlement.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>com.apple.security.cs.debugger</key>
+    <true/>
+</dict>
+</plist>
+</pre>
+EOF
+codesign --entitlements gdb-entitlement.xml -fs gdb-cert $(which gdb)
+```
+
+- Refresh the system's certificates and code-signing data
+
+```bash
+sudo killall taskgated
+```
 
 
 ## Work tools
