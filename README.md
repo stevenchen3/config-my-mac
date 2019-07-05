@@ -78,6 +78,15 @@ mv checker-279 /usr/local/opt/
 echo 'export PATH=$PATH:/usr/local/opt/checker-279/bin' >> ~/.bash_profile
 ```
 
+### Install and configure `gdb`
+
+```bash
+brew install gdb
+echo "set startup-with-shell off" >> ~/.gdbinit
+```
+
+Code sign `gdb` by following [this guide](https://sourceware.org/gdb/wiki/PermissionsDarwin)
+
 
 ## Work tools
 
