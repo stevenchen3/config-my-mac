@@ -68,6 +68,17 @@ you may run the `setup.sh` script to do most of the following automatically.
 + Configure `~/.bash_profile` (refer to `bash/bash_profile`)
 + Configure vim (See `README.md` directory `vim` for details)
 
+### Install `clang` Analyzer
+
+See [here](http://clang-analyzer.llvm.org/) for details.
+
+```
+curl -LsS --retry 3 http://clang-analyzer.llvm.org/downloads/checker-279.tar.bz2 | tar zxvf -
+mv checker-279 /usr/local/opt/
+echo 'export PATH=$PATH:/usr/local/opt/bin' >> ~/.bash_profile
+```
+
+
 ## Work tools
 
 + Configure work email
