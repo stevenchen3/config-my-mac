@@ -72,7 +72,7 @@ you may run the `setup.sh` script to do most of the following automatically.
 
 See [here](http://clang-analyzer.llvm.org/) for details.
 
-```
+```bash
 curl -LsS --retry 3 http://clang-analyzer.llvm.org/downloads/checker-279.tar.bz2 | tar zxvf -
 mv checker-279 /usr/local/opt/
 echo 'export PATH=$PATH:/usr/local/opt/bin' >> ~/.bash_profile
