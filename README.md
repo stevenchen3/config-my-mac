@@ -112,6 +112,22 @@ codesign --entitlements gdb-entitlement.xml -fs gdb-cert $(which gdb)
 sudo killall taskgated
 ```
 
+### Install and configure `bazel`
+
+```bash
+sudo xcodebuild -license accept
+# Check the latest stable version at https://github.com/bazelbuild/bazel/releases
+export BAZEL_VERSION=2.1.0
+curl -LO https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh
+chmod +x *.sh bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh && ./bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh
+```
+
+Add the following to `~/.bash_profile` to bash completion:
+
+```
+source /usr/local/lib/bazel/bin/bazel-complete.bash
+```
+
 
 ## Work tools
 
