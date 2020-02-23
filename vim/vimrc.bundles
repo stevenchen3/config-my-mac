@@ -100,3 +100,9 @@ Plugin 'fatih/vim-go'
 "   - Context-sensitive autocompletion
 " See https://github.com/mdempsky/gocode
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+
+" Add maktaba and bazel to the runtimepath.
+" (The latter must be installed before it can be used.)
+" See https://github.com/bazelbuild/vim-bazel
+Plugin 'google/vim-maktaba'
+Plugin 'bazelbuild/vim-bazel'
