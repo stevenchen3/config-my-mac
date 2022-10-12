@@ -8,6 +8,7 @@ CHECKED_FLAG="${GREEN}[\xE2\x9C\x94]${NC} "
 
 
 # Install `xcode` command line and development tools
+# - git
 install_xcode() {
   if ! xcode_path="$(xcode-select -p)" || [ -z "${xcode_path}" ]; then
     echo "Installing Xcode Command Line Tools"
@@ -16,6 +17,7 @@ install_xcode() {
   else
     printf "${CHECKED_FLAG}Xcode developer tools have been installed, skip installing xcode\n"
   fi
+
   local -r git_version=$(git --version)
   printf "${CHECKED_FLAG}Installed git version '${git_version}'\n"
 }
@@ -36,21 +38,26 @@ install_package() {
 }
 
 
+# Backup a file if it already exists
 backup_file() {
   declare -r file_path=$1
 
   if [ -f "${file_path}" ]; then
+    # default backup file name
+    local dst_path="${file_path}.bak"
+
     if [ -f "${file_path}.bak" ]; then
-      local ts=$(date '+%Y%M%d%H%m%S')
-      mv "${file_path}" "${file_path}.bak.${ts}"
-    else
-      mv "${file_path}" "${file_path}.bak"
+      local -r ts=$(date '+%Y%M%d%H%m%S')
+      dst_path="${file_path}.bak.${ts}"
     fi
+
+    mv "${file_path}" "${dst_path}"
+    echo "Back file ${file_path} to ${dst_path}"
   fi
 }
 
 
-# Install `brew` command
+# Install `brew` command and export system envariables to ~/.zshrc
 install_homebrew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -74,6 +81,7 @@ install_scalafmt() {
 
 
 # Config `vim`
+#
 # Dependencies
 # - brew
 # - clang-format installed by brew
@@ -82,25 +90,32 @@ configure_vim() {
   declare -r vimrc_local="${HOME}/.vimrc.local"
   declare -r vimrc_bundles="${HOME}/.vimrc.bundles"
 
+  source ${HOME}/.zshrc
   echo "Configuring VIM"
 
-  backup_file "${vimrc_conf}"    && cp ./vim/vimrc ${vimrc_conf}
-  backup_file "${vimrc_local}"   && cp ./vim/vimrc.local ${vimrc_local}
+  backup_file "${vimrc_conf}"    && cp ./vim/vimrc         ${vimrc_conf}
+  backup_file "${vimrc_local}"   && cp ./vim/vimrc.local   ${vimrc_local}
   backup_file "${vimrc_bundles}" && cp ./vim/vimrc.bundles ${vimrc_bundles}
 
   local -r clang_release_date=$(ls -t ${HOMEBREW_HOME}/Cellar/clang-format | awk 'NR==1{print $1}')
   sed -i '' -e 's/__CHANGE_ME__/'"${clang_release_date}"'/g' ${vimrc_local} # no backup before replacement
-  sed -i '' -e 's/__HOMEBREW_INSTALL_DIR__/'"${HOMEBREW_INSTALL_DIR}"'/g' ${vimrc_local} # no backup before replacement
+  sed -i '' -e 's/__HOMEBREW_INSTALL_DIR__/'"${HOMEBREW_INSTALL_DIR}"'/g' ${vimrc_local}
 }
 
 
 # Install `vim` plugins
+#
+# Depends on
+# - create_usr_locals
+# - install_golang
+#
 install_vim_plugins() {
   declare -r vim_d="/usr/local/etc/vim.d"
   # 12 Oct 2022
   # - Observe directory change
   declare -r ycm_extra_conf_py="$HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
 
+  # Install plugins to VIM installed via brew in a non-interactive way
   $(brew --prefix vim)/bin/vim -c PluginInstall -c q -c q
 
   # TODO
@@ -146,10 +161,12 @@ configure_bash() {
 }
 
 
+# Create required directories with sudo and change the ownership to current user
 create_usr_locals() {
    mkdir -p /usr/local/etc &&  chown -R $(whoami):staff /usr/local/etc
    mkdir -p /usr/local/opt &&  chown -R $(whoami):staff /usr/local/opt
 }
+
 
 configure_checkstyle() {
   declare -r checkstyle_d="/usr/local/etc/checkstyle.d"
@@ -217,6 +234,8 @@ install_golang() {
 #install_and_configure_vim
 #configure_bash
 
+# Optional
+#
 ## Install, Scala, SBT
 #install_package scala "Scala" "brew install scala"
 #install_package sbt "SBT"     "brew install sbt"
