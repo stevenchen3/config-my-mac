@@ -120,14 +120,15 @@ nmap <silent> <F5> :call ClangCheck()<CR><CR>
 "
 " Config shortcut for triggering the source code format for C family.
 " Press 'Control' and 'i' in NORMAL mode to trigger the fomartting
+" __HOMEBREW_INSTALL_DIR__ default is '/usr/local/Cellar'
 if has('python')
-  map  <C-I> :pyf      /usr/local/Cellar/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
-  imap <C-I> <ESC>:pyf /usr/local/Cellar/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
-  imap <C-I> <c-o>:pyf /usr/local/Cellar/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
+  map  <C-I> :pyf      __HOMEBREW_INSTALL_DIR__/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
+  imap <C-I> <ESC>:pyf __HOMEBREW_INSTALL_DIR__/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
+  imap <C-I> <c-o>:pyf __HOMEBREW_INSTALL_DIR__/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
 elseif has('python3')
-  map  <C-I> :py3f      /usr/local/Cellar/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
-  imap <C-I> <ESC>:py3f /usr/local/Cellar/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
-  imap <C-I> <c-o>:py3f /usr/local/Cellar/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
+  map  <C-I> :py3f      __HOMEBREW_INSTALL_DIR__/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
+  imap <C-I> <ESC>:py3f __HOMEBREW_INSTALL_DIR__/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
+  imap <C-I> <c-o>:py3f __HOMEBREW_INSTALL_DIR__/clang-format/__CHANGE_ME__/share/clang/clang-format.py<CR>
 endif
 " -----------------------------------------------------------------------------
 " Shortcut to trigger Scala source code formatting
@@ -136,7 +137,7 @@ endif
 " If you do not require Scala code auto-formatting, comment this section.
 "
 " To format Scala source, type 'sft' (excluding single quotes) in normal mode.
-map sft :%!java -jar /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
+map sft :%!java -jar __HOMEBREW_INSTALL_DIR__/scalariform/0.1.7/libexec/scalariform.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
 
 " -----------------------------------------------------------------------------
 " Settings for plugin 'airblade/vim-gitgutter'
@@ -196,7 +197,7 @@ let g:vim_markdown_folding_disabled = 1
 " -----------------------------------------------------------------------------
 " Integrate `scalariform` with vim
 " See https://github.com/scala-ide/scalariform
-au BufEnter *.scala setl formatprg=java\ -jar\ /usr/local/Cellar/scalariform/0.1.7/libexec/scalariform.jar\ -f\ -q\ +compactControlReadability\ +alignParameters\ +alignSingleLineCaseStatements\ +doubleIndentClassDeclaration\ +rewriteArrowSymbols\ +preserveSpaceBeforeArguments\ --stdin\ --stdout
+au BufEnter *.scala setl formatprg=java\ -jar\ __HOMEBREW_INSTALL_DIR__/scalariform/0.1.7/libexec/scalariform.jar\ -f\ -q\ +compactControlReadability\ +alignParameters\ +alignSingleLineCaseStatements\ +doubleIndentClassDeclaration\ +rewriteArrowSymbols\ +preserveSpaceBeforeArguments\ --stdin\ --stdout
 
 " -----------------------------------------------------------------------------
 "  Settings for `Chiel92/vim-autoformat`
