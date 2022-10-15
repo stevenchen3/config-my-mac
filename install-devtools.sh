@@ -62,7 +62,7 @@ install_homebrew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   local -r brew_install_path=$(which brew)
-  local -r brew_home_dir=$(dirname ${brew_install_path})
+  local -r brew_home_dir=$(dirname $(dirname ${brew_install_path}))
 
   echo "export HOMEBREW_HOME=${brew_home_dir}" >> ${HOME}/.zshrc
   echo "export HOMEBREW_INSTALL_DIR=\${HOMEBREW_HOME}/Cellar" >> ${HOME}/.zshrc
@@ -161,10 +161,23 @@ configure_bash() {
 }
 
 
+# Create given directory if not exists
+mkdirs_if_not_exists() {
+  declare -r dir=${1}
+
+  if [[ ! -d ${dir} ]] ; then
+   mkdir -p ${dir}
+  fi
+}
+
+
 # Create required directories with sudo and change the ownership to current user
 create_usr_locals() {
-   mkdir -p /usr/local/etc &&  chown -R $(whoami):staff /usr/local/etc
-   mkdir -p /usr/local/opt &&  chown -R $(whoami):staff /usr/local/opt
+  mkdirs_if_not_exists "/usr/local/etc"
+  mkdirs_if_not_exists "/usr/local/opt"
+
+  chown -R $(whoami):staff /usr/local/etc
+  chown -R $(whoami):staff /usr/local/opt
 }
 
 
@@ -205,31 +218,31 @@ install_golang() {
 
 
 ######### Main ########
-##
-#install_xcode
-#install_homebrew
+#
+install_xcode
+install_homebrew
 
 # Install `Homebrew` install_package brew "Homebrew" install_homebrew
 
 # Install `llvm`, `cmake`, `tree`, `wget`
-#install_package llvm-gcc "LLVM tools"    "brew install llvm"
-#install_package cmake    "cmake command" "brew install cmake"
-#install_package tree     "tree command"  "brew install tree"
-#install_package wget     "wget command"  "brew install wget"
+install_package llvm-gcc "LLVM tools"    "brew install llvm"
+install_package cmake    "cmake command" "brew install cmake"
+install_package tree     "tree command"  "brew install tree"
+install_package wget     "wget command"  "brew install wget"
 
 # Install Java JDK 1.8, `google-java-format` requires it
-#install_package javac "Java 8" "brew cask install java"
+install_package javac "Java 8" "brew cask install java"
 
 # Install style checkers and formatters
-#install_package clang-format "Clang-format"                "brew install clang-format"                      # C-family code style check and format
-#install_package checkstyle "Checkstyle"                    "brew install checkstyle"                        # Java code style check
-#install_package google-java-format "Google Java Formatter" "brew install google-java-format"                # Java code formatter
-#install_package scalastyle "Scala Style Checker"           "brew install scalastyle"                        # Scala code style check
-#install_package scalariform "Scala Code Formatter"         "brew install scalariform"                       # Scala code formatter
+install_package clang-format "Clang-format"                "brew install clang-format"                      # C-family code style check and format
+install_package checkstyle "Checkstyle"                    "brew install checkstyle"                        # Java code style check
+install_package google-java-format "Google Java Formatter" "brew install google-java-format"                # Java code formatter
+install_package scalastyle "Scala Style Checker"           "brew install scalastyle"                        # Scala code style check
+install_package scalariform "Scala Code Formatter"         "brew install scalariform"                       # Scala code formatter
 #install_scalafmt # Another Scala code formatter
 
-#create_usr_locals
-#configure_checkstyle
+create_usr_locals
+configure_checkstyle
 
 #install_and_configure_vim
 #configure_bash
