@@ -171,6 +171,9 @@ autocmd FileType apache setlocal commentstring=#\ %s
 "
 let g:snips_trigger_key = '<F2>'
 
+" https://github.com/amix/vimrc/issues/635
+let g:snipMate = { 'snippet_version' : 1 }
+
 " -----------------------------------------------------------------------------
 "  Settings for plugin 'Yggdroot/indentLine'
 "
