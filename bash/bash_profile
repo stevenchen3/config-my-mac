@@ -1,11 +1,27 @@
 # General settings
 #
 # -------------------------------------------------------------------------------------------------
+# For bash prompt
+#
 # set the color of username and hostname promted in terminal
 # the username and hostname will look like 'user@hostname:~$' in your terminal session
 export PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
 export CLICOLOR=1
 export LSCOLORS=gxfxaxdxcxegedabagacad
+
+# -------------------------------------------------------------------------------------------------
+# For zsh prompt
+autoload -U colors && colors
+#export PS1="[%F{214}%K{000}%n%F{015}%K{000}:%F{039}%K{000}%~%F{015}%K{000}]\$ "
+#export PS1="[%F{214}%K{000}%n@%F{314}%K{100}%m%F{015}%K{000}:%F{039}%K{000}%~%F{015}%K{000}]\$ "
+export PS1="[%F{214}%n%F{blue}@%F{magenta}%m%F{015}:%F{039}%~%F{015}]\$ "
+
+export CLICOLOR=1
+export LSCOLORS=gxfxaxdxcxegedabagacad
+
+#
+# Keep either bash prompt or zsh prompt
+#
 
 # -------------------------------------------------------------------------------------------------
 # some more ls aliases
