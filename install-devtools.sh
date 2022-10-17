@@ -154,10 +154,10 @@ install_and_configure_vim() {
 # Config bash preferences
 configure_bash() {
   declare -r bash_conf="${HOME}/.bash_profile"
-  declare -r bash_conf_local="$HOME/.bash_aliases"
+  declare -r bash_conf_aliases="$HOME/.bash_aliases"
 
-  backup_file "${bash_conf}"       && cp ./bash/bash_profile ${bash_conf}
-  backup_file "${bash_conf_local}" && cp ./bash/bash_profile.local ${bash_conf_local}
+  backup_file "${bash_conf}"         && cp ./bash/bash_profile ${bash_conf}
+  backup_file "${bash_conf_aliases}" && cp ./bash/bash_aliases ${bash_conf_aliases}
 }
 
 
@@ -234,18 +234,18 @@ install_package wget     "wget command"  "brew install wget"
 install_package javac "Java 8" "brew cask install java"
 
 # Install style checkers and formatters
-install_package clang-format "Clang-format"                "brew install clang-format"                      # C-family code style check and format
-install_package checkstyle "Checkstyle"                    "brew install checkstyle"                        # Java code style check
-install_package google-java-format "Google Java Formatter" "brew install google-java-format"                # Java code formatter
-install_package scalastyle "Scala Style Checker"           "brew install scalastyle"                        # Scala code style check
-install_package scalariform "Scala Code Formatter"         "brew install scalariform"                       # Scala code formatter
+install_package clang-format "Clang-format"                "brew install clang-format"       # C-family code style check and format
+install_package checkstyle "Checkstyle"                    "brew install checkstyle"         # Java code style check
+install_package google-java-format "Google Java Formatter" "brew install google-java-format" # Java code formatter
+install_package scalastyle "Scala Style Checker"           "brew install scalastyle"         # Scala code style check
+install_package scalariform "Scala Code Formatter"         "brew install scalariform"        # Scala code formatter
 #install_scalafmt # Another Scala code formatter
 
 create_usr_locals
 configure_checkstyle
 
-#install_and_configure_vim
-#configure_bash
+install_and_configure_vim
+configure_bash
 
 # Optional
 #
