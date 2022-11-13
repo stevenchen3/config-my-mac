@@ -99,7 +99,7 @@ configure_vim() {
 
   local -r clang_release_date=$(ls -t ${HOMEBREW_HOME}/Cellar/clang-format | awk 'NR==1{print $1}')
   sed -i '' -e 's/__CHANGE_ME__/'"${clang_release_date}"'/g' ${vimrc_local} # no backup before replacement
-  sed -i '' -e 's/__HOMEBREW_INSTALL_DIR__/'"${HOMEBREW_INSTALL_DIR}"'/g' ${vimrc_local}
+  sed -i '' -e 's/__HOMEBREW_INSTALL_DIR__/\/usr\/local\/Cellar/g' ${vimrc_local}
 }
 
 
